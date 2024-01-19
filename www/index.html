@@ -23,9 +23,7 @@
         })
     }
     
-    function   enter(){
-
-    }
+    
 
    function searchName() {
        let name= $("#name").val();
@@ -48,47 +46,29 @@
           showResults(results);
         })
     }
-    function searchLevel() {
-       let level=parseInt( $("#level").val());
+    function searchattack() {
+       let attack=parseInt( $("#attack").val());
       let TestDataClass = ncmb.DataStore(db);
       TestDataClass
-      .equalTo("level",level)
+      .equalTo("attack",attack)
+      .fetchAll()
+        .then(function(results) {
+          showResults(results);
+        })
+    }searchdefence
+
+  function searchdefence() {
+       let defence=parseInt( $("#defence").val());
+      let TestDataClass = ncmb.DataStore(db);
+      TestDataClass
+      .equalTo("defence",defence)
       .fetchAll()
         .then(function(results) {
           showResults(results);
         })
     }
 
-    function sortattak(){
-
-    }
-
-    function sortdefence(){
-        
-    }
-
-/*
-    function searchLevelLT() {
-       let level=parseInt( $("#level").val());
-      let TestDataClass = ncmb.DataStore(db);
-      TestDataClass
-      .lessThan("level",level)
-      .fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
-    }
-    function searchLevelGT() {
-       let level=parseInt( $("#level").val());
-      let TestDataClass = ncmb.DataStore(db);
-      TestDataClass
-      .greaterThan("level",level)
-      .fetchAll()
-        .then(function(results) {
-          showResults(results);
-        })
-    }
-    */
+    
 
     function showResults(results) {
       // テーブルのヘッダを生成
@@ -128,11 +108,10 @@
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
-    <button class="btn" onclick="enter()">Enter</button>
     <button class="btn" onclick="searchName()">Name</button><br>
     <button class="btn" onclick="searchLevel()">Level</button>
-    <button class="btn" onclick="sortattak()">attack</button>
-    <button class="btn" onclick="sortdefence()">defence<button>
+    <button class="btn" onclick="searchattack()">attack</button>
+    <button class="btn" onclick="searchdefence()">defence<button>
 
   </div>
   <div id="message">message area</div>
